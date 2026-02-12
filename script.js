@@ -1,4 +1,4 @@
-let currentRoom = "room1";
+let currentRoom = "entrance";
 let inventory = [];
 
 const rooms = {
@@ -39,6 +39,15 @@ function renderRoom() {
     container.appendChild(div);
   });
 }
+
+console.log("Rendering room:", currentRoom);
+const container = document.getElementById("game-container");
+if (!container) {
+  console.error("No #game-container found!");
+  return;
+}
+container.innerHTML = "<h1 style='color:white; text-align:center; padding-top:200px;'>TEST - Room: " + currentRoom + "</h1>"; // temp override
+// ... rest of function
 
 function changeRoom(newRoom) {
   if (rooms[newRoom]) {
