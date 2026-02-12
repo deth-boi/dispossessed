@@ -23,14 +23,12 @@ marquee {
 
 #game-container {
   position: relative;
-  width: 100%;                    /* fill available width */
-  max-width: 1344px;              /* cap at widest image */
-  height: auto;                   /* let height follow image aspect */
-  min-height: 80vh;               /* prevent collapse */
-  margin: 0 auto;                 /* center */
-  background-size: contain;       /* show full image, no crop */
-  background-position: top center; /* prioritize top alignment if letterboxed */
-  background-repeat: no-repeat;
+  width: 100vw;
+  height: 80vh;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  margin: 0 auto;
   overflow: hidden;
   image-rendering: pixelated;
 }
