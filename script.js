@@ -12,7 +12,7 @@ const rooms = {
     ]
   },
   mainhall: {
-    background: "assets/images/rooms/main-hall.jpg",
+    background: "assets/images/rooms/main-hall.png",
     hotspots: [
       { id: "gym", x: 100, y: 250, w: 150, h: 280, action: () => changeRoom("gym") },
       { id: "cafeteria", x: 657, y: 648, w: 696, h: 322, action: () => changeRoom("cafeteria") },
