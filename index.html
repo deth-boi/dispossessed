@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Point & Click Game</title>
+  <style>
+    #game-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      cursor: default; /* You can change this on hover */
+    }
+    .hotspot {
+      position: absolute;
+      background: rgba(255,0,0,0.1); /* Make transparent in final version */
+      border: 2px dashed rgba(255,255,255,0.3);
+      cursor: pointer;
+    }
+    .hotspot:hover { background: rgba(255,255,255,0.15); }
+    #inventory { position: absolute; bottom: 20px; left: 20px; display: flex; gap: 10px; }
+  </style>
+</head>
+<body>
+
+  <div id="game-container"></div>
+  <div id="inventory"></div>
+
+  <script>
+    // Game data
+    let currentRoom = "room1";
+    let inventory = [];
+
+    const rooms = {
+      room1: {
+        background: "images/room1.jpg",
+        hotspots: [
+          { id: "door", x: 400, y: 200, w: 150, h: 250, action: () => changeRoom("room2") },
+          { id: "artifact", x: 800, y: 300, w: 120, h: 120, action: () => examine("artifact") }
+        ]
+      },
+      room2: {
+        background: "images/room2.jpg",
+        hotspots: [ /* ... */ ]
+      }
+      // Add more rooms...
+    };
+
+    function renderRoom() {
+      const container = document.getElementById("game-container");
+      container.style.backgroundImage = `url('${rooms[currentRoom].background}')`;
+      container.innerHTML = ""; // Clear old hotspots
+
+      rooms[currentRoom].hotspots.forEach(hotspot => {
+        const div = document.createElement("div");
+        div.className = "hotspot";
+        div.style.left = hotspot.x + "px";
+        div.style.top = hotspot.y + "px";
+        div.style.width = hotspot.w + "px";
+        div.style.height = hotspot.h + "px";
+        div.onclick = hotspot.action;
+        container.appendChild(div);
+      });
+    }
+
+    function changeRoom(newRoom) {
+      currentRoom = newRoom;
+      renderRoom();
+      // Optional: add transition effect
+    }
+
+    function examine(item) {
+      alert(`You examine the ${item}. It looks interesting...`);
+      // Later: show description box, play sound, etc.
+    }
+
+    // Initial load
+    renderRoom();
+  </script>
+</body>
+</html>
