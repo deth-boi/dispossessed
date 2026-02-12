@@ -21,25 +21,63 @@ marquee {
   50% { opacity: 0; }
 }
 
+#game-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 1344px;                 /* cap at your widest image */
+  height: auto;
+  max-height: 85vh;
+  background: #c0c0c0;               /* classic Win95 gray */
+  border: 4px outset #dfdfdf;        /* raised border */
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  overflow: hidden;
+  font-family: 'VT323', monospace;
+}
+
+.title-bar {
+  background: navy;                  /* Win95 title blue */
+  color: white;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  user-select: none;
+}
+
+.close-btn {
+  background: #c0c0c0;
+  border: 2px outset #dfdfdf;
+  width: 24px;
+  height: 24px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
 #game-container {
   position: relative;
-  width: 100vw;
-  height: 80vh;               /* adjust if marquee or inventory bar take more space */
-  margin: 0 auto;
+  width: 100%;
+  height: calc(100% - 36px);        /* subtract title bar height */
+  background: #000;                 /* fallback black */
   overflow: hidden;
 }
 
 #room-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;        /* ← this shows the full image with black bars if needed */
-  display: block;
-  image-rendering: pixelated; /* keeps it crisp for retro style */
+  object-fit: contain;              /* full image, no crop, letterbox if needed */
+  image-rendering: pixelated;
 }
+
+/* Hotspots on top */
 .hotspot {
   position: absolute;
-  background: rgba(255,0,255,0.2); /* magenta debug */
-  border: 2px dashed #00ffff;
+  background: rgba(255,0,0,0.2);    /* temporary red for debug – remove later */
+  border: 2px dashed cyan;
   cursor: pointer;
 }
 
