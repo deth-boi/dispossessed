@@ -24,45 +24,38 @@ const rooms = {
 
 function renderRoom() {
   const container = document.getElementById("game-container");
-  if (!container) {
-    console.error("game-container not found");
+  const img = document.getElementById("room-image");
+
+  if (!container || !img) {
+    console.error("Missing container or room-image element");
     return;
   }
 
   const room = rooms[currentRoom];
   if (!room) {
     console.error("Room not found:", currentRoom);
-    container.innerHTML = `<div style="color:red; font-size:2rem; text-align:center; padding:100px;">
-      Room "${currentRoom}" does not exist yet
-    </div>`;
+    img.src = ""; // clear
+    container.innerHTML = "<div style='color:red; padding:100px; text-align:center;'>Room not found</div>";
     return;
   }
 
-  // Lock aspect ratio to image to prevent cropping/distortion
-  let aspect = "1 / 1";  // square fallback
-  if (currentRoom === "mainhall") {
-    aspect = "1344 / 896";  // ~1.5:1 wider
-  } else if (currentRoom === "entrance") {
-    aspect = "1024 / 1024";  // square
-  }
+  // Just set the src of the image
+  img.src = room.background;
 
-  container.style.aspectRatio = aspect;
-  container.style.maxWidth = "100%";
-  container.style.maxHeight = "80vh";
-  container.style.margin = "0 auto";
-
-  container.style.backgroundImage = `url('${room.background}')`;
-
+  // Clear any old hotspots
   container.innerHTML = "";
+  container.appendChild(img);   // make sure it's inside
 
+  // Add hotspots on top of the image
   room.hotspots.forEach(h => {
     const div = document.createElement("div");
     div.className = "hotspot";
+    div.style.position = "absolute";
     div.style.left = h.x + "px";
     div.style.top = h.y + "px";
     div.style.width = h.w + "px";
     div.style.height = h.h + "px";
-    div.title = h.id.replace(/([A-Z])/g, ' $1');
+    div.title = h.id;
     div.onclick = h.action;
     container.appendChild(div);
   });
