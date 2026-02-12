@@ -65,15 +65,17 @@ marquee {
 #game-container {
   position: relative;
   width: 100%;
-  height: auto;                    /* grow with image */
+  height: auto;                    /* let it follow aspect ratio */
   background: #000;
+  overflow: hidden;
+  margin: 0 auto;
 }
 
 #room-image {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;             /* full image, no crop, letterbox if needed */
+  object-fit: contain;
   image-rendering: pixelated;
 }
 
