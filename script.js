@@ -23,34 +23,24 @@ const rooms = {
 };
 
 function renderRoom() {
-  const container = document.getElementById("game-container");
   const img = document.getElementById("room-image");
-
-  if (!container || !img) {
-    console.error("Missing container or room-image element");
-    return;
-  }
+  if (!img) return;
 
   const room = rooms[currentRoom];
   if (!room) {
-    console.error("Room not found:", currentRoom);
-    img.src = ""; // clear
-    container.innerHTML = "<div style='color:red; padding:100px; text-align:center;'>Room not found</div>";
+    img.src = "";
     return;
   }
 
-  // Just set the src of the image
-  img.src = room.background;
+  img.src = room.background;  // local path with / or raw if needed
 
-  // Clear any old hotspots
-  container.innerHTML = "";
-  container.appendChild(img);   // make sure it's inside
+  // Clear and add hotspots
+  const container = document.getElementById("game-container");
+  container.querySelectorAll('.hotspot').forEach(el => el.remove());
 
-  // Add hotspots on top of the image
   room.hotspots.forEach(h => {
     const div = document.createElement("div");
     div.className = "hotspot";
-    div.style.position = "absolute";
     div.style.left = h.x + "px";
     div.style.top = h.y + "px";
     div.style.width = h.w + "px";
