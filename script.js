@@ -29,7 +29,7 @@ function renderRoom() {
   const room = rooms[currentRoom];
     if (!room) {
     console.error("Room not found:", currentRoom);
-    img.src = "";
+    img.src = "https://picsum.photos/1024/1024";
     img.alt = "Room not found";
     return;
   }
