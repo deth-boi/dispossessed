@@ -23,8 +23,6 @@ const rooms = {
 };
 
 function renderRoom() {
-  console.log("Setting background to:", room.background);
-
   const container = document.getElementById("game-container");
   if (!container) {
     console.error("game-container not found");
@@ -40,13 +38,12 @@ function renderRoom() {
     return;
   }
 
-  // Set background — try /assets/... first (root-relative works best on GitHub Pages)
-  container.style.backgroundImage = `url('/assets/images/rooms/${currentRoom}.png')`;
+  console.log("Setting background to:", room.background);
 
-  // Clear old content
+  container.style.backgroundImage = `url('${room.background}')`;
+
   container.innerHTML = "";
 
-  // Add hotspots
   room.hotspots.forEach(h => {
     const div = document.createElement("div");
     div.className = "hotspot";
@@ -54,7 +51,7 @@ function renderRoom() {
     div.style.top = h.y + "px";
     div.style.width = h.w + "px";
     div.style.height = h.h + "px";
-    div.title = h.id.replace(/([A-Z])/g, ' $1'); // better tooltip spacing
+    div.title = h.id.replace(/([A-Z])/g, ' $1');
     div.onclick = h.action;
     container.appendChild(div);
   });
@@ -92,6 +89,8 @@ function showDialog(title, message) {
     titleEl.textContent = title;
     textEl.textContent = message;
     document.getElementById("dialog-modal").classList.remove("hidden");
+  } else {
+    console.error("Dialog elements missing");
   }
 }
 
@@ -101,7 +100,10 @@ function closeDialog() {
 
 function renderInventory() {
   const bar = document.getElementById("inventory-bar");
-  if (!bar) return;
+  if (!bar) {
+    console.error("inventory-bar not found");
+    return;
+  }
 
   bar.innerHTML = "";
   for (let i = 0; i < 5; i++) {
