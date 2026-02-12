@@ -24,7 +24,7 @@ marquee {
 #game-container {
   position: relative;
   width: 100vw;
-  height: 80vh;
+  height: 80vh;               /* adjust if marquee or inventory bar take more space */
   margin: 0 auto;
   overflow: hidden;
 }
@@ -32,10 +32,10 @@ marquee {
 #room-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;      /* ← this is the magic: full image, no crop, letterbox if needed */
-  image-rendering: pixelated;
+  object-fit: contain;        /* ← this shows the full image with black bars if needed */
+  display: block;
+  image-rendering: pixelated; /* keeps it crisp for retro style */
 }
-
 .hotspot {
   position: absolute;
   background: rgba(255,0,255,0.2); /* magenta debug */
