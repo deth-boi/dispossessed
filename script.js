@@ -38,7 +38,18 @@ function renderRoom() {
     return;
   }
 
-  console.log("Setting background to:", room.background);
+  // Lock aspect ratio to image to prevent cropping/distortion
+  let aspect = "1 / 1";  // square fallback
+  if (currentRoom === "mainhall") {
+    aspect = "1344 / 896";  // ~1.5:1 wider
+  } else if (currentRoom === "entrance") {
+    aspect = "1024 / 1024";  // square
+  }
+
+  container.style.aspectRatio = aspect;
+  container.style.maxWidth = "100%";
+  container.style.maxHeight = "80vh";
+  container.style.margin = "0 auto";
 
   container.style.backgroundImage = `url('${room.background}')`;
 
