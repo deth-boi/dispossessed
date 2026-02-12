@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #000 url('images/bg-room1.gif') repeat;  /* tiled background is key */
+  color: #00ff00; /* matrix green or hot pink #ff00ff */
+  font-family: 'VT323', monospace; /* pixel font */
+  image-rendering: pixelated; /* keep pixels crisp */
+  overflow: hidden;
+  height: 100vh;
+}
+
+marquee {
+  background: #000;
+  color: #ffff00;
+  font-size: 1.4rem;
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+#game-container {
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+  background-size: cover;
+  cursor: url('images/pixel-cursor.png'), auto; /* optional */
+}
+
+.hotspot {
+  position: absolute;
+  background: rgba(255,0,255,0.2); /* magenta debug */
+  border: 2px dashed #00ffff;
+  cursor: pointer;
+}
+
+.hotspot:hover {
+  background: rgba(255,255,0,0.4);
+  box-shadow: 0 0 12px #ffff00;
+}
+
+#status-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #000;
+  color: #00ff00;
+  text-align: center;
+  padding: 8px;
+  font-size: 1.1rem;
+  border-top: 3px double #00ffff;
+}
+
+#construction-sign {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 180px;
+  opacity: 0.9;
+}
