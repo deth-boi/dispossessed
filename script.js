@@ -40,22 +40,11 @@ function renderRoom() {
   });
 }
 
-console.log("Rendering room:", currentRoom);
-const container = document.getElementById("game-container");
-if (!container) {
-  console.error("No #game-container found!");
-  return;
-}
-container.innerHTML = "<h1 style='color:white; text-align:center; padding-top:200px;'>TEST - Room: " + currentRoom + "</h1>"; // temp override
-// ... rest of function
-
-function changeRoom(newRoom) {
-  if (rooms[newRoom]) {
-    currentRoom = newRoom;
-    renderRoom();
-  } else {
-    showDialog("Error", "That room doesn't exist yet... still under construction!");
-  }
+function renderRoom() {
+  console.log("renderRoom called for room:", currentRoom);  // check console
+  const container = document.getElementById("game-container");
+  container.innerHTML = '<div style="color: white; font-size: 3rem; text-align: center; padding: 200px 0;">TEST: Loading ' + currentRoom + '...</div>';  // temp visible text
+  // ... your existing code after this
 }
 
 function examine(item) {
