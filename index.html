@@ -4,19 +4,38 @@
   <meta charset="UTF-8">
   <title>DISPOSSESSED</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"> <!-- pixel font via Google (easy) -->
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
   <marquee behavior="scroll" direction="left" scrollamount="6">
     <span class="blink">Welcome back to school • Under Construction since forever • Best viewed in Google Chrome or Firefox • Sign my guestbook!!</span>
   </marquee>
 
-  <div id="game-container">
-    <img src="images/under-construction.gif" id="construction-sign" alt="Under Construction!">
+  <div id="game-container"></div>
+
+  <!-- Inventory bar (5 slots, Win95 taskbar style) -->
+  <div id="inventory-bar"></div>
+
+  <!-- Status bar -->
+  <div id="status-bar">
+    <img src="assets/images/ui/spinning-globe.gif" alt="Globe"> Revolution of the Dispossessed © 1997-2026
   </div>
 
-  <div id="status-bar">
-    <img src="images/spinning-globe.gif" alt="Globe"> Revolution of the Dispossessed © 1997-2026
+  <!-- Hidden modal for examine / messages -->
+  <div id="dialog-modal" class="modal hidden">
+    <div class="dialog-box">
+      <div class="title-bar">
+        <span>Examine.exe</span>
+        <button class="close-btn" onclick="closeDialog()">X</button>
+      </div>
+      <div class="content">
+        <img id="dialog-icon" src="assets/images/ui/exclamation.png" alt="!" class="icon">
+        <p id="dialog-text">Loading description...</p>
+      </div>
+      <div class="buttons">
+        <button onclick="closeDialog()">OK</button>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
