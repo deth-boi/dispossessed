@@ -23,50 +23,49 @@ const rooms = {
 };
 
 function renderRoom() {
-  console.log("renderRoom called for room:", currentRoom);
-
   const img = document.getElementById("room-image");
   const container = document.getElementById("game-container");
 
   if (!img || !container) {
-    console.error("Missing room-image or game-container");
+    console.error("Missing img or container");
     return;
   }
 
   const room = rooms[currentRoom];
   if (!room) {
     console.error("Room not found:", currentRoom);
-    img.src = "https://picsum.photos/1024/1024"; // fallback public image
-    img.alt = "Room not found - test image";
-    // Still add hotspots for testing
-  } else {
-    img.src = room.background;
-    console.log("Set img.src to:", img.src);
+    img.src = "https://picsum.photos/1024/1024"; // fallback
+    return;
   }
 
-  img.onload = () => console.log("Image loaded OK");
-  img.onerror = () => {
-    console.error("Image load failed - using fallback");
-    img.src = "https://picsum.photos/1024/1024";
-  };
+  // Set aspect ratio to match the current room's image
+  let aspect = "1 / 1"; // default square
+  if (currentRoom === "entrance") {
+    aspect = "1024 / 1024"; // square
+  } else if (currentRoom === "mainhall") {
+    aspect = "1344 / 896"; // wider
+  }
+
+  container.style.aspectRatio = aspect;
+
+  img.src = room.background;
+  console.log("Set src to:", img.src);
 
   // Clear old hotspots
   container.querySelectorAll('.hotspot').forEach(el => el.remove());
 
-  // Add hotspots (even if image failed, for debugging)
-  if (room) {
-    room.hotspots.forEach(h => {
-      const div = document.createElement("div");
-      div.className = "hotspot";
-      div.style.left = h.x + "px";
-      div.style.top = h.y + "px";
-      div.style.width = h.w + "px";
-      div.style.height = h.h + "px";
-      div.title = h.id;
-      div.onclick = h.action;
-      container.appendChild(div);
-    });
-  }
+  // Add hotspots
+  room.hotspots.forEach(h => {
+    const div = document.createElement("div");
+    div.className = "hotspot";
+    div.style.left = h.x + "px";
+    div.style.top = h.y + "px";
+    div.style.width = h.w + "px";
+    div.style.height = h.h + "px";
+    div.title = h.id;
+    div.onclick = h.action;
+    container.appendChild(div);
+  });
 }
 
 function changeRoom(newRoom) {
