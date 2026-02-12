@@ -23,7 +23,7 @@ const rooms = {
 };
 
 function renderRoom() {
-  console.log("renderRoom called for room:", currentRoom); // keep for debugging
+  console.log("Setting background to:", room.background);
 
   const container = document.getElementById("game-container");
   if (!container) {
