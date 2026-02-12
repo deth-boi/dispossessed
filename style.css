@@ -23,16 +23,12 @@ marquee {
 
 #game-container {
   position: relative;
-  width: 100vw;                   /* full width of viewport */
-  height: 80vh;                   /* leaves room for marquee + inventory bar */
-  max-width: 1344px;              /* matches your widest image */
-  max-height: 1024px;             /* matches your tallest image */
-  margin: 0 auto;                 /* centers if viewport wider than image */
-  background-size: contain;       /* shows FULL image, no crop, letterboxed if needed */
-  background-position: center;    /* centers the image */
-  background-repeat: no-repeat;   /* important */
+  margin: 0 auto;                 /* center */
+  background-size: contain;       /* full image visible */
+  background-position: center;
+  background-repeat: no-repeat;
   overflow: hidden;
-  image-rendering: pixelated;     /* optional — keeps crisp edges for retro style */
+  image-rendering: pixelated;     /* optional for retro crispness */
 }
 
 .hotspot {
