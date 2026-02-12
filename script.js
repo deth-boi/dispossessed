@@ -27,12 +27,18 @@ function renderRoom() {
   if (!img) return;
 
   const room = rooms[currentRoom];
-  if (!room) {
+    if (!room) {
+    console.error("Room not found:", currentRoom);
     img.src = "";
+    img.alt = "Room not found";
     return;
   }
 
-  img.src = room.background;  // local path with / or raw if needed
+  img.src = room.background;
+  console.log("img.src set to:", img.src);  // debug: see what path is being used
+
+  img.onload = () => console.log("Image loaded OK:", room.background);
+  img.onerror = () => console.error("Image failed to load:", room.background);
 
   // Clear and add hotspots
   const container = document.getElementById("game-container");
