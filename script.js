@@ -27,34 +27,38 @@ function renderRoom() {
   if (!img) return;
 
   const room = rooms[currentRoom];
-    if (!room) {
-    console.error("Room not found:", currentRoom);
-    img.src = "https://picsum.photos/1024/1024";
-    img.alt = "Room not found";
-    return;
-  }
-
+if (!room) {
+  console.error("Room not found:", currentRoom);
+  img.src = "https://picsum.photos/1024/1024"; // fallback public test image
+  img.alt = "Room not found";
+  // Still add hotspots even if no room (for testing)
+} else {
   img.src = room.background;
-  console.log("img.src set to:", img.src);  // debug: see what path is being used
+  console.log("img.src set to:", img.src);
 
-  img.onload = () => console.log("Image loaded OK:", room.background);
-  img.onerror = () => console.error("Image failed to load:", room.background);
+  img.onload = () => {
+    console.log("Image loaded OK:", room.background);
+    // Add hotspots only after image loads (prevents positioning issues)
+    const container = document.getElementById("game-container");
+    container.querySelectorAll('.hotspot').forEach(el => el.remove());
 
-  // Clear and add hotspots
-  const container = document.getElementById("game-container");
-  container.querySelectorAll('.hotspot').forEach(el => el.remove());
+    room.hotspots.forEach(h => {
+      const div = document.createElement("div");
+      div.className = "hotspot";
+      div.style.left = h.x + "px";
+      div.style.top = h.y + "px";
+      div.style.width = h.w + "px";
+      div.style.height = h.h + "px";
+      div.title = h.id;
+      div.onclick = h.action;
+      container.appendChild(div);
+    });
+  };
 
-  room.hotspots.forEach(h => {
-    const div = document.createElement("div");
-    div.className = "hotspot";
-    div.style.left = h.x + "px";
-    div.style.top = h.y + "px";
-    div.style.width = h.w + "px";
-    div.style.height = h.h + "px";
-    div.title = h.id;
-    div.onclick = h.action;
-    container.appendChild(div);
-  });
+  img.onerror = () => {
+    console.error("Image failed to load:", room.background);
+    img.src = "https://picsum.photos/1024/1024"; // fallback on error
+  };
 }
 
 function changeRoom(newRoom) {
