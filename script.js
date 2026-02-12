@@ -2,18 +2,22 @@ let currentRoom = "room1";
 let inventory = [];
 
 const rooms = {
-  room1: {
-    background: "assets/images/rooms/room1.jpg",  // ← CHANGE TO YOUR ACTUAL FILE NAMES
+  entrance: {
+    background: "assets/images/rooms/entrance.png",
     hotspots: [
-      { id: "door", x: 500, y: 200, w: 180, h: 300, action: () => changeRoom("room2") },
-      { id: "mysterious-object", x: 700, y: 350, w: 120, h: 140, action: () => examine("mysterious object") }
+      { id: "front-door", x: 555, y: 482, w: 468, h: 619, action: () => changeRoom("main-hall") },
+      { id: "parkinglot", x: 3, y: 553, w: 266, h: 733, action: () => changeRoom("parking lot") },
+      { id: "smokers-pit", x: 1023, y: 985, w: 912, h: 737, action: () => changeRoom("smokers-pit") }
+      
     ]
   },
-  room2: {
-    background: "assets/images/rooms/room2.jpg",
+  mainhall: {
+    background: "assets/images/rooms/main-hall.jpg",
     hotspots: [
-      { id: "door-back", x: 100, y: 250, w: 150, h: 280, action: () => changeRoom("room1") },
-      { id: "item-to-pick", x: 800, y: 400, w: 90, h: 90, action: () => pickup("floppy") }
+      { id: "gym", x: 100, y: 250, w: 150, h: 280, action: () => changeRoom("gym") },
+      { id: "cafeteria", x: 657, y: 648, w: 696, h: 322, action: () => changeRoom("cafeteria") },
+      { id: "hallway", x: 367, y: 286, w: 532, h: 573, action: () => changeRoom("hallway") },
+      { id: "janitors-closet", x: 1030, y: 853, w: 1158, h: 103, action: () => changeRoom("janitors-closet") }
     ]
   }
 };
