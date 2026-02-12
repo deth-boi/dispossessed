@@ -19,7 +19,7 @@ const rooms = {
       { id: "janitorscloset", x: 1030, y: 853, w: 1158, h: 103, action: () => changeRoom("janitorscloset") }
     ]
   }
-  // Add more rooms here later
+  // Add more rooms here later, e.g. "gym": { ... }
 };
 
 function renderRoom() {
