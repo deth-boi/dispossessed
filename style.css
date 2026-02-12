@@ -1,7 +1,5 @@
 body {
-  margin: 0;
-  padding: 0;
-  background: #000 url('images/bg-room1.gif') repeat;  /* tiled background is key */
+  background: #000 url('assets/images/rooms/bg-stars.gif') repeat;
   color: #00ff00; /* matrix green or hot pink #ff00ff */
   font-family: 'VT323', monospace; /* pixel font */
   image-rendering: pixelated; /* keep pixels crisp */
