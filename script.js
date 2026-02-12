@@ -23,25 +23,38 @@ const rooms = {
 };
 
 function renderRoom() {
+  console.log("renderRoom called for room:", currentRoom);
+
   const img = document.getElementById("room-image");
-  if (!img) return;
+  const container = document.getElementById("game-container");
+
+  if (!img || !container) {
+    console.error("Missing room-image or game-container");
+    return;
+  }
 
   const room = rooms[currentRoom];
-if (!room) {
-  console.error("Room not found:", currentRoom);
-  img.src = "https://picsum.photos/1024/1024"; // fallback public test image
-  img.alt = "Room not found";
-  // Still add hotspots even if no room (for testing)
-} else {
-  img.src = room.background;
-  console.log("img.src set to:", img.src);
+  if (!room) {
+    console.error("Room not found:", currentRoom);
+    img.src = "https://picsum.photos/1024/1024"; // fallback public image
+    img.alt = "Room not found - test image";
+    // Still add hotspots for testing
+  } else {
+    img.src = room.background;
+    console.log("Set img.src to:", img.src);
+  }
 
-  img.onload = () => {
-    console.log("Image loaded OK:", room.background);
-    // Add hotspots only after image loads (prevents positioning issues)
-    const container = document.getElementById("game-container");
-    container.querySelectorAll('.hotspot').forEach(el => el.remove());
+  img.onload = () => console.log("Image loaded OK");
+  img.onerror = () => {
+    console.error("Image load failed - using fallback");
+    img.src = "https://picsum.photos/1024/1024";
+  };
 
+  // Clear old hotspots
+  container.querySelectorAll('.hotspot').forEach(el => el.remove());
+
+  // Add hotspots (even if image failed, for debugging)
+  if (room) {
     room.hotspots.forEach(h => {
       const div = document.createElement("div");
       div.className = "hotspot";
@@ -53,12 +66,7 @@ if (!room) {
       div.onclick = h.action;
       container.appendChild(div);
     });
-  };
-
-  img.onerror = () => {
-    console.error("Image failed to load:", room.background);
-    img.src = "https://picsum.photos/1024/1024"; // fallback on error
-  };
+  }
 }
 
 function changeRoom(newRoom) {
