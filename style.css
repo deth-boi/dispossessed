@@ -23,12 +23,12 @@ marquee {
 
 #game-container {
   position: relative;
-  margin: 0 auto;                 /* center */
-  background-size: contain;       /* full image visible */
+  margin: 0 auto;                    /* centers on wide screens */
+  background-size: 100% 100%;        /* force exact image size fill (no crop, but may stretch if aspect mismatch) */
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
-  image-rendering: pixelated;     /* optional for retro crispness */
+  image-rendering: pixelated;        /* keeps crisp for retro */
 }
 
 .hotspot {
