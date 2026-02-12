@@ -3,7 +3,7 @@ let inventory = [];
 
 const rooms = {
   entrance: {
-    background: "/assets/images/rooms/entrance.png",
+    background: "https://raw.githubusercontent.com/deth-boi/dispossessed/main/assets/images/rooms/entrance.png",
     hotspots: [
       { id: "frontdoor", x: 555, y: 482, w: 468, h: 619, action: () => changeRoom("mainhall") },
       { id: "parkinglot", x: 3, y: 553, w: 266, h: 733, action: () => changeRoom("parkinglot") },
@@ -11,7 +11,7 @@ const rooms = {
     ]
   },
   mainhall: {
-    background: "/assets/images/rooms/mainhall.png",
+    background: "https://raw.githubusercontent.com/deth-boi/dispossessed/main/assets/images/rooms/mainhall.png",
     hotspots: [
       { id: "gym", x: 100, y: 250, w: 150, h: 280, action: () => changeRoom("gym") },
       { id: "cafeteria", x: 657, y: 648, w: 696, h: 322, action: () => changeRoom("cafeteria") },
