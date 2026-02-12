@@ -31,8 +31,7 @@ marquee {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90vw;
-  max-width: 1344px;               /* widest image */
-  min-height: 512px;               /* prevent collapse on small screens */
+  max-width: 1344px;
   background: #c0c0c0;
   border: 4px outset #dfdfdf;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
@@ -65,10 +64,8 @@ marquee {
 #game-container {
   position: relative;
   width: 100%;
-  height: auto;                    /* let it follow aspect ratio */
+  height: auto;
   background: #000;
-  overflow: hidden;
-  margin: 0 auto;
 }
 
 #room-image {
