@@ -25,48 +25,48 @@ const rooms = {
 function renderRoom() {
   const img = document.getElementById("room-image");
   const container = document.getElementById("game-container");
+const img = document.getElementById("room-image");
 
-  if (!img || !container) {
-    console.error("Missing img or container");
-    return;
-  }
-
-  const room = rooms[currentRoom];
-  if (!room) {
-    console.error("Room not found:", currentRoom);
-    img.src = "https://picsum.photos/1024/1024"; // fallback
-    return;
-  }
-
-  // Set aspect ratio to match the current room's image
-  let aspect = "1 / 1"; // default square
-  if (currentRoom === "entrance") {
-    aspect = "1024 / 1024"; // square
-  } else if (currentRoom === "mainhall") {
-    aspect = "1344 / 896"; // wider
-  }
-
-  container.style.aspectRatio = aspect;
-
-  img.src = room.background;
-  console.log("Set src to:", img.src);
-
-  // Clear old hotspots
-  container.querySelectorAll('.hotspot').forEach(el => el.remove());
-
-  // Add hotspots
-  room.hotspots.forEach(h => {
-    const div = document.createElement("div");
-    div.className = "hotspot";
-    div.style.left = h.x + "px";
-    div.style.top = h.y + "px";
-    div.style.width = h.w + "px";
-    div.style.height = h.h + "px";
-    div.title = h.id;
-    div.onclick = h.action;
-    container.appendChild(div);
-  });
+if (!container || !img) {
+  console.error("Missing container or room-image");
+  return;
 }
+
+const room = rooms[currentRoom];
+if (!room) {
+  console.error("Room not found:", currentRoom);
+  img.src = "https://picsum.photos/1024/1024";
+  img.alt = "Room not found";
+  return;
+}
+
+img.src = room.background;
+console.log("img.src set to:", img.src);
+
+// Set container aspect ratio to match image
+let aspect = "1 / 1";  // default square
+if (currentRoom === "entrance") {
+  aspect = "1024 / 1024";
+} else if (currentRoom === "mainhall") {
+  aspect = "1344 / 896";
+}
+container.style.aspectRatio = aspect;
+container.style.height = "auto";  // ensure it follows aspect
+
+// Clear and add hotspots (your existing code)
+container.querySelectorAll('.hotspot').forEach(el => el.remove());
+
+room.hotspots.forEach(h => {
+  const div = document.createElement("div");
+  div.className = "hotspot";
+  div.style.left = h.x + "px";
+  div.style.top = h.y + "px";
+  div.style.width = h.w + "px";
+  div.style.height = h.h + "px";
+  div.title = h.id;
+  div.onclick = h.action;
+  container.appendChild(div);
+});
 
 function changeRoom(newRoom) {
   if (rooms[newRoom]) {
