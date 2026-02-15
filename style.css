@@ -1,205 +1,245 @@
+/* style.css */
+* {
+    box-sizing: border-box;
+}
+
 body {
-  background: #000 url('assets/images/rooms/bg-stars.gif') repeat;
-  color: #00ff00;
-  font-family: 'VT323', monospace;
-  image-rendering: pixelated;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: #008080;
+    font-family: "MS Sans Serif", "Arial", sans-serif;
+    font-size: 11px;
+    color: #000;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    image-rendering: pixelated;
 }
 
-marquee {
-  background: #000;
-  color: #ffff00;
-  font-size: 1.4rem;
-  margin: 0;
+/* DESKTOP BACKGROUND */
+.desktop {
+    width: 100%;
+    height: 100%;
+    background: url('https://picsum.photos/id/1018/1920/1080') center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.blink {
-  animation: blink 1s step-end infinite;
+/* WINDOW */
+.window {
+    width: 860px;
+    background: #c0c0c0;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #808080;
+    border-right: 2px solid #808080;
+    box-shadow: 4px 4px 0 #00000080;
+    position: relative;
+    user-select: none;
 }
 
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-/* Win95-style centered frame */
-#game-frame {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;
-  max-width: 1344px;
-  background: #c0c0c0;
-  border: 4px outset #dfdfdf;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  overflow: hidden;
-  font-family: 'VT323', monospace;
-  box-sizing: border-box;
-}
-
+/* TITLE BAR */
 .title-bar {
-  background: navy;
-  color: white;
-  padding: 6px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
-  user-select: none;
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: white;
+    padding: 3px 6px;
+    display: flex;
+    align-items: center;
+    height: 28px;
+    font-weight: bold;
 }
 
-.close-btn {
-  background: #c0c0c0;
-  border: 2px outset #dfdfdf;
-  width: 24px;
-  height: 24px;
-  line-height: 20px;
-  text-align: center;
-  cursor: pointer;
+.title-bar-text {
+    flex: 1;
+    padding-left: 4px;
+    text-shadow: 1px 1px 0 #000080;
 }
 
-#game-container {
-  position: relative;
-  width: 100%;
-  height: auto;
-  background: #000;
+.title-bar-controls {
+    display: flex;
+    gap: 2px;
 }
 
-#room-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  image-rendering: pixelated;
+.title-button {
+    width: 22px;
+    height: 20px;
+    background: #c0c0c0;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #808080;
+    border-right: 2px solid #808080;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
 }
 
-/* Hotspots */
+.title-button:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+
+.title-button.close {
+    background: #c0c0c0;
+}
+
+/* MENU BAR */
+.menu-bar {
+    background: #c0c0c0;
+    border-bottom: 2px solid #808080;
+    padding: 2px 6px;
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+}
+
+/* WINDOW BODY */
+.window-body {
+    padding: 8px;
+    background: #c0c0c0;
+}
+
+/* SCENE */
+.scene-container {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    border: 4px solid #fff;
+    border-bottom-color: #808080;
+    border-right-color: #808080;
+    overflow: hidden;
+    background: #000;
+    box-shadow: inset 2px 2px 0 #808080;
+}
+
+#background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+}
+
+.hotspots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
 .hotspot {
-  position: absolute;
-  background: rgba(255,0,0,0.25);  /* debug – remove later */
-  border: 2px dashed lime;
-  cursor: pointer;
+    position: absolute;
+    pointer-events: auto;
+    cursor: pointer;
+    /* DEBUG: remove these two lines when you're happy with placement */
+    /* border: 2px dashed rgba(255, 0, 0, 0.4); */
+    /* background: rgba(255, 255, 0, 0.1); */
 }
 
-.hotspot:hover {
-  background: rgba(255,255,0,0.4);
-  box-shadow: 0 0 12px #ffff00;
+/* INVENTORY */
+.inventory-bar {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px;
+    background: #c0c0c0;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #808080;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #808080;
 }
 
-/* Status & Inventory (fixed at bottom, outside frame) */
-#status-bar {
-  position: fixed;
-  bottom: 80px;  /* above inventory */
-  left: 0;
-  width: 100%;
-  background: #000;
-  color: #00ff00;
-  text-align: center;
-  padding: 8px;
-  font-size: 1.1rem;
-  border-top: 3px double #00ffff;
-  z-index: 1000;
+.inventory-slot {
+    width: 76px;
+    height: 76px;
+    background: #fff;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #808080;
+    border-right: 2px solid #808080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    box-shadow: inset 1px 1px 0 #808080;
+    overflow: hidden;
 }
 
-#inventory-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background: #c0c0c0;
-  border-top: 4px outset #dfdfdf;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  box-sizing: border-box;
-  z-index: 1000;  /* higher than frame */
+/* STATUS BAR */
+.status-bar {
+    background: #c0c0c0;
+    border-top: 2px solid #fff;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #000;
 }
 
-.inv-slot {
-  width: 64px;
-  height: 64px;
-  image-rendering: pixelated;
-  border: 3px inset #808080;
-  background: #ffffff;
-  cursor: pointer;
+/* MESSAGE BOX */
+.message-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    background: #c0c0c0;
+    border: 2px solid #fff;
+    border-bottom-color: #808080;
+    border-right-color: #808080;
+    box-shadow: 4px 4px 0 #00000080;
+    z-index: 100;
 }
 
-.inv-slot:hover {
-  border: 3px outset #dfdfdf;
+.message-title-bar {
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: white;
+    padding: 3px 8px;
+    font-weight: bold;
 }
 
-/* Modal */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
+.message-body {
+    padding: 16px 12px 12px;
+    text-align: center;
 }
 
-.hidden { display: none !important; }
-
-.dialog-box {
-  width: 420px;
-  max-width: 90%;
-  background: #c0c0c0;
-  border: 4px outset #dfdfdf;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+.message-body p {
+    margin: 0 0 20px 0;
+    font-size: 13px;
+    line-height: 1.4;
 }
 
-.title-bar {
-  background: navy;
-  color: white;
-  padding: 6px 10px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.message-buttons {
+    text-align: center;
 }
 
-.close-btn {
-  background: #c0c0c0;
-  border: 2px outset #dfdfdf;
-  width: 24px;
-  height: 24px;
-  font-size: 16px;
-  line-height: 20px;
-  text-align: center;
-  cursor: pointer;
+.message-buttons button {
+    min-width: 80px;
+    padding: 4px 20px;
+    background: #c0c0c0;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #808080;
+    border-right: 2px solid #808080;
+    font-size: 11px;
+    cursor: pointer;
 }
 
-.content {
-  padding: 20px;
-  display: flex;
-  align-items: flex-start;
+.message-buttons button:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
 }
 
-.icon {
-  width: 48px;
-  height: 48px;
-  margin-right: 16px;
-  image-rendering: pixelated;
-}
-
-.buttons {
-  padding: 12px;
-  text-align: center;
-}
-
-button {
-  background: #c0c0c0;
-  border: 2px outset #dfdfdf;
-  padding: 8px 24px;
-  margin: 0 8px;
-  cursor: pointer;
-  font-family: 'VT323', monospace;
-  font-size: 1.2rem;
+.hidden {
+    display: none !important;
 }
