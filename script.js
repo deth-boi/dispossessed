@@ -5,7 +5,7 @@ let collected = new Set(); // tracks which world items have been picked up
 
 const rooms = {
     campus: {
-        image: 'https://github.com/deth-boi/dispossessed/blob/main/assets/images/backgrounds/campus.png',
+        image: 'https://raw.githubusercontent.com/deth-boi/dispossessed/main/assets/images/backgrounds/campus.png',
         hotspots: [
             {
                 id: 'entrance',
@@ -40,7 +40,7 @@ const rooms = {
         ]
     },
     parkinglot: {
-        image: 'https://github.com/deth-boi/dispossessed/blob/main/assets/images/backgrounds/parkinglot.png',
+        image: 'https://raw.githubusercontent.com/deth-boi/dispossessed/main/assets/images/backgrounds/parkinglot.png',
         hotspots: [
             {
                 id: 'back',
@@ -64,7 +64,7 @@ const rooms = {
         ]
     },
     smokerspit: {
-        image: 'https://github.com/deth-boi/dispossessed/blob/main/assets/images/backgrounds/smokerspit.png',
+        image: 'https://raw.githubusercontent.com/deth-boi/dispossessed/main/assets/images/backgrounds/smokerspit.png',
         hotspots: [
             {
                 id: 'campus',
