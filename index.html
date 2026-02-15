@@ -1,52 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>DISPOSSESSED</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISPOSSESSED.exe</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <marquee behavior="scroll" direction="left" scrollamount="6">
-    <span class="blink">Welcome back to school • Under Construction since forever • Best viewed in Google Chrome or Firefox • Sign my guestbook!!</span>
-  </marquee>
+    <div class="desktop">
+        <div class="window" id="main-window">
+            <!-- TITLE BAR -->
+            <div class="title-bar" id="title-bar">
+                <div class="title-bar-text">
+                    <span>DISPOSSESSED.exe</span>
+                </div>
+                <div class="title-bar-controls">
+                    <button class="title-button" onclick="minimizeWindow()">─</button>
+                    <button class="title-button" onclick="maximizeWindow()">□</button>
+                    <button class="title-button close" onclick="closeWindow()">✕</button>
+                </div>
+            </div>
 
-  <!-- Win95-style frame -->
-  <div id="game-frame">
-    <div class="title-bar">
-      <span>Dispossessed.exe - Jordan's Mystery School Adventure</span>
-      <button class="close-btn" onclick="alert('You can\'t close the simulation, dude.')">X</button>
+            <!-- MENU BAR (fake) -->
+            <div class="menu-bar">
+                <span>File</span>
+                <span>Edit</span>
+                <span>View</span>
+                <span>Help</span>
+            </div>
+
+            <!-- GAME AREA -->
+            <div class="window-body">
+                <div class="scene-container" id="scene-container">
+                    <img id="background" src="https://picsum.photos/id/1015/800/500" alt="Current Room">
+                    <div id="hotspots" class="hotspots"></div>
+                </div>
+
+                <!-- INVENTORY -->
+                <div class="inventory-bar">
+                    <div class="inventory-slot" id="slot-1"></div>
+                    <div class="inventory-slot" id="slot-2"></div>
+                    <div class="inventory-slot" id="slot-3"></div>
+                    <div class="inventory-slot" id="slot-4"></div>
+                    <div class="inventory-slot" id="slot-5"></div>
+                </div>
+            </div>
+
+            <!-- STATUS BAR -->
+            <div class="status-bar">
+                <span id="status-text">You stand in the dusty foyer of the old Victorian house...</span>
+                <span class="time" id="time">3:42 PM</span>
+            </div>
+        </div>
+
+        <!-- MESSAGE BOX -->
+        <div id="message-box" class="message-box hidden">
+            <div class="message-title-bar">
+                <span>DISPOSSESSED.exe</span>
+            </div>
+            <div class="message-body">
+                <p id="message-text">This is a test message.</p>
+                <div class="message-buttons">
+                    <button onclick="hideMessage()">OK</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="game-container">
-      <img id="room-image" src="" alt="Current room" loading="lazy">
-    </div>
-  </div>
 
-  <!-- Inventory bar -->
-  <div id="inventory-bar"></div>
-
-  <!-- Status bar -->
-  <div id="status-bar">
-    Revolution of the Dispossessed © 1997-2026
-  </div>
-
-  <!-- Modal -->
-  <div id="dialog-modal" class="modal hidden">
-    <div class="dialog-box">
-      <div class="title-bar">
-        <span>Examine.exe</span>
-        <button class="close-btn" onclick="closeDialog()">X</button>
-      </div>
-      <div class="content">
-        <img id="dialog-icon" src="assets/images/ui/exclamation.png" alt="!" class="icon">
-        <p id="dialog-text">Loading description...</p>
-      </div>
-      <div class="buttons">
-        <button onclick="closeDialog()">OK</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
