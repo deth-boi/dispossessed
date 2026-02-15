@@ -1,106 +1,80 @@
 // script.js
-let currentRoom = 'foyer';
+let currentRoom = 'campus';
 let inventory = [];
 let collected = new Set(); // tracks which world items have been picked up
 
 const rooms = {
-    foyer: {
-        image: 'https://picsum.photos/id/1015/800/500',
+    campus: {
+        image: 'https://github.com/deth-boi/dispossessed/blob/main/assets/images/backgrounds/campus.png',
         hotspots: [
             {
-                id: 'door-living',
-                x: 520,
-                y: 140,
-                w: 140,
-                h: 260,
-                label: 'Living Room',
-                action: () => changeRoom('living')
+                id: 'entrance',
+                x: 704,
+                y: 383,
+                w: 807,
+                h: 420,
+                label: 'Entrance',
+                action: () => changeRoom('lockers')
+            },
+
+{
+                 id: 'parkinglot',
+                x: 569,
+                y: 581,
+                w: 956,
+                h: 716,
+                label: 'Parking Lot',
+                action: () => changeRoom('parkinglot')
+            },
+
+            {
+                 id: 'smokerspit',
+                x: 2,
+                y: 451,
+                w: 133,
+                h: 539,
+                label: 'Smoker's Pit',
+                action: () => changeRoom('smokerspit')
+            },
+            
+        ]
+    },
+    parkinglot: {
+        image: 'https://github.com/deth-boi/dispossessed/blob/main/assets/images/backgrounds/parkinglot.png',
+        hotspots: [
+            {
+                id: 'back',
+                x: 9,
+                y: 334,
+                w: 292,
+                h: 414,
+                label: 'Back to School',
+                action: () => changeRoom('campus')
             },
             {
-                id: 'door-basement',
-                x: 280,
-                y: 160,
-                w: 90,
-                h: 240,
-                label: 'Basement Door',
-                action: () => {
-                    if (inventory.some(item => item.id === 'key')) {
-                        showMessage("The rusty key slides into the lock with a satisfying click...\n\nYou descend into the darkness.");
-                        changeRoom('basement');
-                    } else {
-                        showMessage("The door is locked. You hear faint scratching from the other side.");
-                    }
-                }
-            },
-            {
-                id: 'key',
-                x: 140,
-                y: 380,
-                w: 70,
-                h: 50,
-                label: 'Rusty Key',
-                action: () => pickupItem({
-                    id: 'key',
-                    emoji: '🗝️',
-                    name: 'Rusty Key'
+                id: 'whitetruck',
+                x: 861,
+                y: 410,
+                w: 896,
+                h: 432,
+                label: 'White Truck',
+                action: () => changeRoom('whitetruck')
                 })
             }
         ]
     },
-    living: {
-        image: 'https://picsum.photos/id/133/800/500',
+    smokerspit: {
+        image: 'https://github.com/deth-boi/dispossessed/blob/main/assets/images/backgrounds/smokerspit.png',
         hotspots: [
             {
-                id: 'door-foyer',
-                x: 40,
-                y: 180,
-                w: 110,
-                h: 240,
-                label: 'Back to Foyer',
-                action: () => changeRoom('foyer')
+                id: 'campus',
+                x: 285,
+                y: 419,
+                w: 766,
+                h: 532,
+                label: 'Back to School',
+                action: () => () => changeRoom('campus')
             },
-            {
-                id: 'cross',
-                x: 480,
-                y: 220,
-                w: 60,
-                h: 120,
-                label: 'Silver Cross',
-                action: () => pickupItem({
-                    id: 'cross',
-                    emoji: '✝️',
-                    name: 'Silver Cross'
-                })
-            }
-        ]
-    },
-    basement: {
-        image: 'https://picsum.photos/id/201/800/500',
-        hotspots: [
-            {
-                id: 'spirit',
-                x: 320,
-                y: 120,
-                w: 160,
-                h: 280,
-                label: 'The Spirit',
-                action: () => {
-                    if (inventory.some(item => item.id === 'cross')) {
-                        showMessage("You hold the silver cross high.\n\nThe spirit screams and dissolves into smoke.\n\nYou are no longer... DISPOSSESSED.\n\n\nTHE END");
-                    } else {
-                        showMessage("The spirit lunges at you...\n\nGAME OVER.");
-                    }
-                }
-            },
-            {
-                id: 'exit',
-                x: 680,
-                y: 380,
-                w: 80,
-                h: 80,
-                label: 'Stairs',
-                action: () => changeRoom('foyer')
-            }
         ]
     }
 };
