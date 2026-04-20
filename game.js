@@ -34,12 +34,12 @@ const scenes = {
         dialogue: "A long corridor stretches before you. It's eerily quiet and empty...",
         hotspots: [
             {
-                x: 691,
-                y: 679,        // top = smaller y (your y2)
-                w: 934 - 691,  // width = 243
-                h: 795 - 679,  // height = 116
-                target: "hallway",
-                name: "Entrance"
+                x: 
+                y: 
+                w:
+                h: 
+                target: 
+                name: 
             }
     },
     "classroom": {
