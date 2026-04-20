@@ -3,70 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DISPOSSESSED.exe</title>
+    <title>DOOM - Point & Click</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="desktop">
-        <div class="window" id="main-window">
-            <!-- TITLE BAR -->
-            <div class="title-bar" id="title-bar">
-                <div class="title-bar-text">
-                    <span>DISPOSSESSED.exe</span>
-                </div>
-                <div class="title-bar-controls">
-                    <button class="title-button" onclick="minimizeWindow()">─</button>
-                    <button class="title-button" onclick="maximizeWindow()">□</button>
-                    <button class="title-button close" onclick="closeWindow()">✕</button>
-                </div>
-            </div>
+    <div class="hud">
 
-            <!-- MENU BAR (fake) -->
-            <div class="menu-bar">
-                <span>File</span>
-                <span>Edit</span>
-                <span>View</span>
-                <span>Help</span>
-            </div>
+        <!-- TOP: Dialogue box (DOOM-style message bar) -->
+        <div id="dialogue" class="dialogue">
+            Welcome to the facility, marine. Click doors to move.
+        </div>
 
-            <!-- GAME AREA -->
-            <div class="window-body">
-                <div class="scene-container" id="scene-container">
-                    <img id="background" src="https://github.com/deth-boi/dispossessed/blob/main/assets/images/backgrounds/campus.png" alt="Current Room">
-                    <div id="hotspots" class="hotspots"></div>
-                </div>
-
-                <!-- INVENTORY -->
-                <div class="inventory-bar">
-                    <div class="inventory-slot" id="slot-1"></div>
-                    <div class="inventory-slot" id="slot-2"></div>
-                    <div class="inventory-slot" id="slot-3"></div>
-                    <div class="inventory-slot" id="slot-4"></div>
-                    <div class="inventory-slot" id="slot-5"></div>
-                </div>
-            </div>
-
-            <!-- STATUS BAR -->
-            <div class="status-bar">
-                <span id="status-text">You stand in the dusty foyer of the old Victorian house...</span>
-                <span class="time" id="time">3:42 PM</span>
+        <!-- MIDDLE: Player viewport (exactly 1680×1080) -->
+        <div id="viewport" class="viewport">
+            <img id="room-image" src="images/room-start.jpg" alt="Current room">
+            
+            <!-- Hotspots will be injected here by JavaScript -->
+            <div id="hotspots-layer"></div>
+            
+            <!-- Dev mode overlay (click anywhere to log coordinates) -->
+            <div id="dev-overlay" class="dev-overlay">
+                <label><input type="checkbox" id="dev-mode"> DEV MODE — click image to log coords</label>
             </div>
         </div>
 
-        <!-- MESSAGE BOX -->
-        <div id="message-box" class="message-box hidden">
-            <div class="message-title-bar">
-                <span>DISPOSSESSED.exe</span>
-            </div>
-            <div class="message-body">
-                <p id="message-text">This is a test message.</p>
-                <div class="message-buttons">
-                    <button onclick="hideMessage()">OK</button>
-                </div>
-            </div>
+        <!-- BOTTOM: 3 inventory slots (DOOM-style status bar) -->
+        <div id="inventory" class="inventory">
+            <div class="slot" id="slot-1"></div>
+            <div class="slot" id="slot-2"></div>
+            <div class="slot" id="slot-3"></div>
         </div>
+
     </div>
 
-    <script src="script.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>
