@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOOM - Point & Click</title>
+    <title>DOOM - UAC Facility</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="hud">
 
-        <!-- TOP: Dialogue box (DOOM-style message bar) -->
+        <!-- Top: Dialogue / Message bar (like DOOM messages) -->
         <div id="dialogue" class="dialogue">
-            Welcome to the facility, marine. Click doors to move.
+            You enter the abandoned UAC entrance. The door ahead is ajar...
         </div>
 
-        <!-- MIDDLE: Player viewport (exactly 1680×1080) -->
+        <!-- Main Viewport (the "player screen") -->
         <div id="viewport" class="viewport">
-            <img id="room-image" src="images/room-start.jpg" alt="Current room">
-            
-            <!-- Hotspots will be injected here by JavaScript -->
+            <img id="room-image" src="assets/images/entrance.png" alt="Current room">
             <div id="hotspots-layer"></div>
-            
-            <!-- Dev mode overlay (click anywhere to log coordinates) -->
+
+            <!-- Dev mode helper -->
             <div id="dev-overlay" class="dev-overlay">
-                <label><input type="checkbox" id="dev-mode"> DEV MODE — click image to log coords</label>
+                <label><input type="checkbox" id="dev-mode"> DEV MODE (click on door to log coords)</label>
             </div>
         </div>
 
-        <!-- BOTTOM: 3 inventory slots (DOOM-style status bar) -->
+        <!-- Bottom: Inventory (3 slots, DOOM-style status bar look) -->
         <div id="inventory" class="inventory">
             <div class="slot" id="slot-1"></div>
             <div class="slot" id="slot-2"></div>
