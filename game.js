@@ -18,8 +18,15 @@ const scenes = {
                 w: 318
                 h: 970
                 target: "smokerspit",
-                name: Smoker's Pit
+                name: "Smoker's Pit"
             }
+            {
+                x: 1320
+                y: 859
+                w: 1679
+                h: 1079
+                target: "parkinglot",
+                name: "Parking Lot"
         ]
     },
     "hallway": {
