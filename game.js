@@ -4,8 +4,14 @@ const scenes = {
         image: "assets/images/entrance.png",
         dialogue: "You've come back from school after your dentist appointment. The air smells like smoke.",
         hotspots: [
-            // Example: change these numbers to your real door coordinates
-            { x: 691, y: 795, w: 934, h: 679, target: "hallway", name: "Enter" }
+            {
+                x: 691,
+                y: 679,        // top = smaller y (your y2)
+                w: 934 - 691,  // width = 243
+                h: 795 - 679,  // height = 116
+                target: "hallway",
+                name: "Entrance"
+            }
         ]
     },
     "hallway": {
