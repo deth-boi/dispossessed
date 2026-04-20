@@ -2,7 +2,7 @@
 const scenes = {
     "start": {
         image: "assets/images/entrance.png",
-        dialogue: "You've come back from school after your dentist appointment. The air smells like smoke.",
+        dialogue: "You're late to school after your dentist appointment. The air smells like smoke.",
         hotspots: [
             {
                 x: 691,
@@ -12,15 +12,28 @@ const scenes = {
                 target: "hallway",
                 name: "Entrance"
             }
+            {
+                x: 4
+                y: 751
+                w: 318
+                h: 970
+                target: "smokerspit",
+                name: Smoker's Pit
+            }
         ]
     },
     "hallway": {
         image: "assets/images/hallway.png",
         dialogue: "A long corridor stretches before you. It's eerily quiet and empty...",
         hotspots: [
-            { x: 1100, y: 420, w: 220, h: 480, target: "start", name: "Back to Entrance" },
-            { x: 80, y: 380, w: 240, h: 520, target: "lab", name: "Lab Door" }
-        ]
+            {
+                x: 691,
+                y: 679,        // top = smaller y (your y2)
+                w: 934 - 691,  // width = 243
+                h: 795 - 679,  // height = 116
+                target: "hallway",
+                name: "Entrance"
+            }
     },
     "classroom": {
         image: "assets/images/classroom.png",
